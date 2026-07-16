@@ -15,6 +15,6 @@ Regras do digest:
   feeds: [
     { name: "RemoteOK", url: "https://remoteok.com/remote-dev-jobs.rss" },
     { name: "WeWorkRemotely", url: "https://weworkremotely.com/categories/remote-programming-jobs.rss" },
-    { name: "Remotive", url: "https://remotive.com/remote-jobs/feed/software-dev" },
+    { name: "WeWorkRemotely Full-Stack", url: "https://weworkremotely.com/categories/remote-full-stack-programming-jobs.rss" },
   ],
 };
