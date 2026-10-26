@@ -21,6 +21,7 @@ export async function digest(): Promise<void> {
   let body: string;
   try {
     body = await chat(topic.systemPrompt, user);
+    if (!body) throw new Error("resposta vazia");
   } catch (err) {
     console.error(`[digest] IA falhou (${err}) — enviando lista bruta`);
     body = list;
@@ -29,7 +30,11 @@ export async function digest(): Promise<void> {
   const date = new Date().toLocaleDateString("pt-BR", { timeZone: "America/Sao_Paulo" });
   const message = `*${topic.emoji} ${topic.title} — ${date}*\n\n${body}`;
 
-  await sendTelegram(message);
+  if (!(await sendTelegram(message))) {
+    console.error("[digest] envio ao Telegram falhou — itens mantidos como pendentes");
+    process.exitCode = 1;
+    return;
+  }
   markDigested(items.map((it) => it.id));
   console.log(`[digest] enviado com ${items.length} itens`);
 }
