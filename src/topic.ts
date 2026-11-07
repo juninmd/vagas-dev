@@ -1,5 +1,6 @@
-// Config específica deste agente. Edite feeds/prompt à vontade.
-export const topic = {
+import { defineTopic } from "@juninmd/digest-kit";
+
+export const topic = defineTopic({
   name: "vagas-dev",
   title: "Vagas Dev Remotas",
   emoji: "💼",
@@ -17,4 +18,4 @@ Regras do digest:
     { name: "WeWorkRemotely", url: "https://weworkremotely.com/categories/remote-programming-jobs.rss" },
     { name: "WeWorkRemotely Full-Stack", url: "https://weworkremotely.com/categories/remote-full-stack-programming-jobs.rss" },
   ],
-};
+});
